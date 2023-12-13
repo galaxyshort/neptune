@@ -1,0 +1,28 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      	<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			<li class="nav-item">
+				<a class="nav-link" href="#">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="persons/register">Register</a></li>
+			<li class="nav-item"><a class="nav-link" href="persons/login">Login</a></li>
+		  		<li class="nav-item dropdown {% if 'persons' in request.path %} active {% endif %}">
+          		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            	Department</a>
+          		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  		<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Botany">Botony</a></li>
+			  		<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/English_studies">English</a></li>
+			  		<li><a class="dropdown-item" href="https://hi.wikipedia.org/wiki/%E0%A4%B9%E0%A4%BF%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%80">Hindi</a></li>
+			  		<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Physics">Physics</a></li>
+			  		<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Zoology">Zology</a></li>
+		  		</ul>
+			</li>
+
+		</ul>
+	</div>
+  </div>
+</nav>

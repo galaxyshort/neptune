@@ -1,0 +1,28 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="https://kit.fontawesome.com/9b6e22776b.js" crossorigin="anonymous"></script>
+    <meta name ="description" content="{% block metadescription %}{% endblock %}">
+    <title>Greetings</title>
+</head>
+<body style="background-color: green">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="d-flex flex-row align-items-start justify-content-start">
+        <li> {{user.username}}</li>&nbsp;&nbsp;
+        <nav class="active"> <a href="/"> Logout</a></nav>&nbsp;&nbsp;
+    </ul>
+    </nav>
+
+    <div>
+        <h1 class="text-center my_title">Hey {{user.username}}, Are you sure to continue?</h1><br>
+        <button>
+		<a href="{% url 'persons:form' %}">Proceed</a>
+        </button>
+    </div>
+    </body>
+</html>

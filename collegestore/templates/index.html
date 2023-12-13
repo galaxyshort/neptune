@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <div class="mx_auto">
+     <div>
+        <img class="my_image my_image_padding" src="/static/image/bg.jpg" width="100%" alt=" ">
+    </div>
+    <br>
+    <div>
+        <h1 class="text-center my_title">Welcome to Sienna College!!</h1>
+        <p class="justify">We ensure better education for a better world!We are a community of learners, thinkers,
+            and doers who are passionate about making a difference in the world. Our college is dedicated to providing
+            students with a well-rounded education that prepares them for success in their chosen fields. We offer a wide
+            range of programs and courses that are designed to challenge and inspire students, and our faculty members are
+            committed to helping students achieve their goals. Whether you are interested in pursuing a degree in the arts,
+            sciences, or humanities, we have something for you. Come join us and discover your potential!”</p>
+    </div>
+
+     <div>
+         <button>
+        <a  href="{% url 'persons:login' %}">Click here</a>
+        </button>
+     </div>
+ </div>
+{% endblock %}

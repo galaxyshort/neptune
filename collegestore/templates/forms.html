@@ -1,0 +1,82 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="https://kit.fontawesome.com/9b6e22776b.js" crossorigin="anonymous"></script>
+    <title>Form</title>
+</head>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="d-flex flex-row align-items-start justify-content-start">
+        <li> {{user.username}}</li>&nbsp;&nbsp;
+        <nav class="active"> <a href="/"> Logout</a></nav>&nbsp;&nbsp;
+    </ul>
+    </nav>
+
+<body style="background-color:green">
+<h1 style="text-align:center;color:Bisque;font-family:Times New Roman;"><b>Application Form</b></h1>
+<div class="col-md-10">
+    <div class="shadow-normal p-3 mb-3 bg-light rounded card" style="width:600px; max-width: 500%; height: 900px;opacity:75%; text-align:left; margin-left:40%;">
+        <div class="card-body">
+            <form action="" method="post" id="personForm" data-course-url="{% url 'persons:ajax_load_course' %}" class="p-3 shadow" onsubmit="return ValidationEvent()">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+        <label>Providing materials :&nbsp</label><br>
+        <input type="checkbox" name="Materials provide" value="Notebook" required>Notebook<br>
+        <input type="checkbox" name="Materials provide" value="Pen" >Pen<br>
+        <input type="checkbox" name="Materials provide" value="Exam papers" >Exam papers<br>
+        <div class="container">
+
+            {{ forms }}
+        </div>
+                <input type="Submit">
+                <span class="confirm">click to finish
+        <button onclick = "myalert()">Confirm</button>
+        <script src="{% static 'js.script.js' %}"></script></span>
+         <span class="return">Return to home? <a href="/">Home</a></span>
+
+
+</form>
+
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_department").change(function () {
+        const url = $("#personForm").attr("data-course-url");  // get the url of the `load_course` view
+        const departmentId = $(this).val();  // get the selected department ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-course/ )
+            data: {
+                'department_id': departmentId       // add the department id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_course` view function
+                $("#id_course").html(data);  // replace the contents of the city input with the data that came from the server
+                /*
+
+                let html_data = '<option value="">-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>';
+                data.forEach(function (course) {
+                    html_data += `<option value="${course.id}">${course.name}</option>`
+                });
+                console.log(html_data);
+                $("#id_course").html(html_data);
+                */
+            }
+        });
+
+    });
+
+    function myalert(){
+            alert("Details saved Successfully!");}
+</script>
+
+
+</div>
+</div>
+
+</body>
+</html>
